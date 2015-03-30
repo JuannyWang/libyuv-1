@@ -10,12 +10,19 @@ set(ly_src_dir ${ly_base_dir}/source/)
 set(ly_inc_dir ${ly_base_dir}/include)
 set(ly_lib_name "yuv")
 
+if(WIN32)
+set(ly_windows_source_files
+  ${ly_src_dir}/compare_win.cc
+  ${ly_src_dir}/row_win.cc
+  ${ly_src_dir}/scale_win.cc
+)
+endif(WIN32)
+
 set(ly_source_files
   ${ly_src_dir}/compare.cc
   ${ly_src_dir}/compare_common.cc
   ${ly_src_dir}/compare_neon.cc
   ${ly_src_dir}/compare_posix.cc
-  ${ly_src_dir}/compare_win.cc
   ${ly_src_dir}/convert.cc
   ${ly_src_dir}/convert_argb.cc
   ${ly_src_dir}/convert_from.cc
@@ -36,15 +43,14 @@ set(ly_source_files
   ${ly_src_dir}/row_mips.cc
   ${ly_src_dir}/row_neon.cc
   ${ly_src_dir}/row_posix.cc
-  ${ly_src_dir}/row_win.cc
   ${ly_src_dir}/scale.cc
   ${ly_src_dir}/scale_argb.cc
   ${ly_src_dir}/scale_common.cc
   ${ly_src_dir}/scale_mips.cc
   ${ly_src_dir}/scale_neon.cc
   ${ly_src_dir}/scale_posix.cc
-  ${ly_src_dir}/scale_win.cc
   ${ly_src_dir}/video_common.cc
+  ${ly_windows_source_files}
 )
 
 set(ly_unittest_sources
