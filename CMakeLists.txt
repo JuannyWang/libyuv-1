@@ -18,11 +18,18 @@ set(ly_windows_source_files
 )
 endif(WIN32)
 
+if(UNIX)
+set(ly_unix_source_files
+  ${ly_src_dir}/compare_posix.cc
+  ${ly_src_dir}/row_posix.cc
+  ${ly_src_dir}/scale_posix.cc
+)
+endif(UNIX)
+
 set(ly_source_files
   ${ly_src_dir}/compare.cc
   ${ly_src_dir}/compare_common.cc
   ${ly_src_dir}/compare_neon.cc
-  ${ly_src_dir}/compare_posix.cc
   ${ly_src_dir}/convert.cc
   ${ly_src_dir}/convert_argb.cc
   ${ly_src_dir}/convert_from.cc
@@ -42,15 +49,14 @@ set(ly_source_files
   ${ly_src_dir}/row_common.cc
   ${ly_src_dir}/row_mips.cc
   ${ly_src_dir}/row_neon.cc
-  ${ly_src_dir}/row_posix.cc
   ${ly_src_dir}/scale.cc
   ${ly_src_dir}/scale_argb.cc
   ${ly_src_dir}/scale_common.cc
   ${ly_src_dir}/scale_mips.cc
   ${ly_src_dir}/scale_neon.cc
-  ${ly_src_dir}/scale_posix.cc
   ${ly_src_dir}/video_common.cc
   ${ly_windows_source_files}
+  ${ly_unix_source_files}
 )
 
 set(ly_unittest_sources
